@@ -16,7 +16,7 @@
 //             return userAnswer === this.answer;
 //         },
 //     },
-    
+
 //     question2: {
 //         questionText: "What will the following code output? \n\nconsole.log(typeof []);",
 //         answerOptions: {
@@ -47,8 +47,6 @@ function Question(questionText, answerOptions, answer) {
     this.questionText = questionText;
     this.answerOptions = answerOptions;
     this.answer = answer;
-
-    console.log(this)
 };
 
 // Prototype checkAnswer()
@@ -65,14 +63,31 @@ let questionsArr = [
     new Question("What will the following code output? \n\nconsole.log(typeof []);", { a: "object", b: "array", c: "boolean", d: "undefined" }, "a"),
 ];
 
-// console.log(questionsArr);
+// DISPLAY ALL QUESTIONS in questionsArr
+// for(let question of questionsArr) {
+//     console.log(question.questionText);
+//     for(let option in question.answerOptions) {
+//         console.log(option + ": " + question.answerOptions[option]);
+//     };
+//     console.log(question.answer);
+// };
 
-for(let question of questionsArr) {
-    console.log(question.questionText);
-    for(let option in question.answerOptions) {
-        console.log(option + ": " + question.answerOptions[option]);
-    };
-    console.log(question.answer);
+function Quiz(questions) {
+    this.questions = questions;
+    this.currentQuestionIndex = 0;
 };
 
-// console.log(questionsArr[0].checkAnswer("b"));
+Quiz.prototype.getCurrentQuestion = function () {
+    return this.questions[this.currentQuestionIndex];
+};
+
+const quiz = new Quiz(questionsArr);
+
+document.querySelector(".btn-start").addEventListener("click", function () {
+    if (quiz.questions.length !== quiz.currentQuestionIndex) {
+        console.log(quiz.getCurrentQuestion());
+        quiz.currentQuestionIndex++;
+    } else {
+        console.log("Quiz is over")
+    };
+});
