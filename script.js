@@ -43,16 +43,29 @@
 
 
 // CONSTRUCTOR FUNCTION (Question()) AND PROTOTYPE (checkAnswer()
-function Question(questionText, answerOptions, answer) {
-    this.questionText = questionText;
-    this.answerOptions = answerOptions;
-    this.answer = answer;
-};
+// function Question(questionText, answerOptions, answer) {
+//     this.questionText = questionText;
+//     this.answerOptions = answerOptions;
+//     this.answer = answer;
+// };
 
-// Prototype checkAnswer()
-Question.prototype.checkAnswer = function (userAnswer) {
-    return userAnswer === this.answer;
-};
+// // Prototype checkAnswer()
+// Question.prototype.checkAnswer = function (userAnswer) {
+//     return userAnswer === this.answer;
+// };
+
+// Question class is added instead of Constructor Function and Prototype
+class Question{
+    constructor(questionText, answerOptions, answer) {
+        this.questionText = questionText;
+        this.answerOptions = answerOptions;
+        this.answer = answer;
+    };
+
+    checkAnswer(userAnswer) {
+        return userAnswer === this.answer;
+    }
+}
 
 // let question1 = new Question("Which of the following is not a primitive data type in JavaScript?", { a: "String", b: "Object", c: "Boolean", d: "Undefined" }, "b");
 
@@ -72,14 +85,26 @@ let questionsArr = [
 //     console.log(question.answer);
 // };
 
-function Quiz(questions) {
-    this.questions = questions;
-    this.currentQuestionIndex = 0;
-};
+// function Quiz(questions) {
+//     this.questions = questions;
+//     this.currentQuestionIndex = 0;
+// };
 
-Quiz.prototype.getCurrentQuestion = function () {
-    return this.questions[this.currentQuestionIndex];
-};
+// Quiz.prototype.getCurrentQuestion = function () {
+//     return this.questions[this.currentQuestionIndex];
+// };
+
+// Quiz class is added instead of Constructor Function and Prototype
+class Quiz{
+    constructor(questions) {
+        this.questions = questions;
+        this.currentQuestionIndex = 0;
+    }
+
+    getCurrentQuestion() {
+        return this.questions[this.currentQuestionIndex];
+    }
+}
 
 const quiz = new Quiz(questionsArr);
 
